@@ -1,0 +1,25 @@
+{
+  "name": "qr3bot",
+  "version": "0.0.1",
+  "description": "QR Code Reader for Telegram",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-stankevich/qr3bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-stankevich/qr3bot/issues"
+  },
+  "homepage": "https://github.com/a-stankevich/qr3bot#readme",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "node-fetch": "^2.6.1",
+    "telegraf": "^3.38.0",
+    "zxing": "^0.1.2"
+  }
+}
