@@ -6,7 +6,7 @@
  - Dockerized
 
 # Run
-Demo instance is running at (@qr3bot)[https://t.me/qr3bot]
+Demo instance is running at [@qr3bot](https://t.me/qr3bot)
 
 To run your own instance:
 ```sh
