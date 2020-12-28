@@ -1,8 +1,8 @@
 # QR Reader bot for Telegram
  - Node.js
- - Telegraf
- - jimp
- - jsqr
+ - [Telegraf](https://github.com/telegraf/telegraf)
+ - [Jimp](https://github.com/oliver-moran/jimp)
+ - [jsQR](https://github.com/cozmo/jsQR)
  - Dockerized
 
 # Run
