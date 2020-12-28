@@ -4,3 +4,5 @@ services:
         container_name: qr_reader_bot
         restart: always
         build: ./
+        environment:
+            - "BOT_TOKEN=${BOT_TOKEN}"
