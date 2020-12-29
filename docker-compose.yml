@@ -1,6 +1,6 @@
 version: "3"
 services:
-    backend:
+    qr_reader_bot:
         container_name: qr_reader_bot
         restart: always
         build: ./
