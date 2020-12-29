@@ -6,3 +6,4 @@ services:
         build: ./
         environment:
             - "BOT_TOKEN=${BOT_TOKEN}"
+            - "NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}"

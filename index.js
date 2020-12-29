@@ -3,6 +3,7 @@ const minimist = require('minimist')
 const Jimp = require('jimp')
 const jsQR = require('jsqr')
 
+const nr = require('newrelic') // application monitoring
 
 async function tryParse(url) {
     console.log(url)
@@ -35,10 +36,34 @@ async function onPhoto(ctx) {
     }
 }
 
+async function onStart(ctx) {
+    ctx.reply('Welcome. Send an image with QR code')
+}
+
+async function newrelicMiddleware(ctx, next) {
+    const wrapper = async () => {
+        const transaction = nr.getTransaction()
+        const message = ctx.update.message
+        if (message) {
+            nr.recordCustomEvent('message', { update_id: ctx.update.update_id, from_user: message.from.username, text: message.text })
+        }
+        try {
+            await next(ctx)
+        } catch (error) {
+            console.error(error)
+            nr.noticeError(error)
+        }
+        transaction.end()
+    }
+    console.log(ctx.updateType)
+    await nr.startWebTransaction(ctx.updateType, wrapper)
+}
+
 
 const args = minimist(process.argv)
 const token = process.env.BOT_TOKEN || args.token
 const bot = new Telegraf(token)
-bot.start(ctx => ctx.reply('Welcome. Send an image with QR code'))
+bot.use(newrelicMiddleware)
+bot.start(onStart)
 bot.on('photo', onPhoto)
 bot.launch()
